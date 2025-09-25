@@ -1,0 +1,7 @@
+# Devices Configuration File (devices.csv)
+
+MAC Address,IP Address,Connected Port,VLAN ID,Description,Last Updated Timestamp
+00:00:00:00:00:01,192.168.1.101,1,1,Laptop-User1,2023-10-05 14:30:00
+00:00:00:00:00:02,192.168.1.102,2,1,Server-Resource1,2023-10-05 14:35:00
+00:00:00:00:00:03,192.168.1.103,3,2(Network Printer),2023-10-05 14:40:00
+00:00:00:00:00:04,192.168.1.104,4,2(Camera Surveillance),2023-10-05 14:45:00

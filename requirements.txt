@@ -1,0 +1,14 @@
+# OpenFlow support for Ryu framework
+ryu==4.19.2
+
+# Packet handling and parsing
+scapy>=0.23
+
+# Logging utilities
+python-loguru>=0.9.0
+
+# Additional network-related libraries
+ipaddress>=1.0.2
+
+# For JSON handling if needed
+json-simple==1.3.3
