@@ -5,40 +5,7 @@ const axios = require('axios');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-// Registration
-router.post('/register', async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const existingUser = await User.findOne({ where: { username } });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Username already exists' });
-    }
-    const user = await User.create({ username, email, password });
-    res.status(201).json({ message: 'User registered successfully', user: { id: user.id, username: user.username, email: user.email } });
-  } catch (error) {
-    res.status(500).json({ message: 'Error registering user', error: error.message });
-  }
-});
 
-// Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', { session: false }, (err, user, info) => {
-    if (err || !user) {
-      return res.status(400).json({
-        message: info ? info.message : 'Login failed',
-        user: user,
-      });
-    }
-    req.login(user, { session: false }, (err) => {
-      if (err) {
-        res.send(err);
-      }
-      // generate a signed json web token with the contents of user object and return it in the response
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'jwtsecretkey');
-      return res.json({ user: { id: user.id, username: user.username, email: user.email }, token });
-    });
-  })(req, res, next);
-});
 
 // Mock Data
 const mockStats = {
