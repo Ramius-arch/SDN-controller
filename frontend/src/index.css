@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace; /* Tron-like font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0a0a; /* Dark background */
+  color: #00e0ff; /* Tron blue/cyan text */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1a1a1a; /* Slightly lighter dark for nav */
+  border-bottom: 1px solid #00e0ff; /* Tron accent line */
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: #00e0ff; /* Tron blue/cyan text */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+nav li a:hover {
+  background-color: #005f7f; /* Darker blue on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+/* General styling for elements to fit the theme */
+h1, h2, h3, h4, h5, h6 {
+  color: #00e0ff;
+  text-shadow: 0 0 5px #00e0ff;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #00e0ff;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  border-color: #00e0ff;
+  box-shadow: 0 0 10px #00e0ff;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  background-color: #1a1a1a;
+  border: 1px solid #00e0ff;
+  color: #00e0ff;
+  padding: 8px;
+  margin: 5px 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff;
+  outline: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #00e0ff;
+  padding: 8px;
+  text-align: left;
+  color: #00e0ff;
+}
+
+th {
+  background-color: #1a1a1a;
+}
+
+.App {
+  padding: 20px;
+}
+
+/* Login Page Styling */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.login-form {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00e0ff;
+  border: 1px solid #00e0ff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00e0ff;
+  text-shadow: 0 0 10px #00e0ff;
+}
+
+.login-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  color: #00e0ff;
+  margin-bottom: 5px;
+}
+
+/* Dashboard Styling */
+.dashboard-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-rows: minmax(200px, auto); /* Ensure a minimum height for grid items */
+  gap: 20px;
+  align-items: stretch; /* Make grid items stretch to fill their area */
+}
+
+.dashboard-section {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00e0ff;
+  border: 1px solid #00e0ff;
+}
+
+.dashboard-section h2 {
+  color: #00e0ff;
+  text-shadow: 0 0 8px #00e0ff;
+  margin-bottom: 15px;
+}
+
+.device-card {
+  background-color: #0a0a0a;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #00e0ff;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+.device-card h3 {
+  color: #00e0ff;
+  text-shadow: 0 0 5px #00e0ff;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chart-card {
+  grid-column: span 2; /* Make the chart span two columns */
+  min-height: 300px; /* Ensure chart has enough vertical space */
+  position: relative;
+  padding: 10px; /* Add some padding inside the chart card */
+}
+
+/* Animations */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #00e0ff;
+  }
+  50% {
+    box-shadow: 0 0 20px #00e0ff;
+  }
+  100% {
+    box-shadow: 0 0 5px #00e0ff;
+  }
+}
+
+button:hover,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Subtle background animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: pulseBackground 10s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulseBackground {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
