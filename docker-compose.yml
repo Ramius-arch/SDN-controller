@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  sdn-python:
+    build:
+      context: ./docker/python
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    environment:
+      - DEBUG=true
+      - PROMETHEUS_WORKSPACE_ID=ws-xxxx
+      - PYTHONPATH=/app
+
+  sdn-nodejs:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000

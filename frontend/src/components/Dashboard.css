@@ -1,0 +1,233 @@
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-section {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.form-container input {
+    flex: 1 1 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    flex-shrink: 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+thead {
+    background-color: #f8f9fa;
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 8px; /* Reduced padding */
+    text-align: left;
+    word-wrap: break-word; /* Ensure long content wraps */
+    font-size: 0.9em; /* Slightly smaller font size */
+}
+
+th {
+    font-weight: 600;
+    color: #495057;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.device-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+    background-color: #f9f9f9;
+}
+
+.device-card h3 {
+    color: #34495e;
+    margin-bottom: 8px; /* Reduced margin */
+}
+
+.collapsible-header {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px; /* Reduced padding */
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px; /* Slightly smaller font size */
+  border-radius: 5px;
+  margin-bottom: 8px; /* Reduced margin */
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #0056b3;
+}
+
+.collapsible-content {
+  padding: 10px; /* Reduced padding */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+/* Specific table adjustments */
+#flow-rules .table-container table,
+#qos-policies .table-container table,
+#traffic-rules .table-container table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#flow-rules .table-container th:nth-child(1),
+#flow-rules .table-container td:nth-child(1) { width: 10%; } /* ID */
+#flow-rules .table-container th:nth-child(2),
+#flow-rules .table-container td:nth-child(2) { width: 25%; } /* Source IP */
+#flow-rules .table-container th:nth-child(3),
+#flow-rules .table-container td:nth-child(3) { width: 25%; } /* Destination IP */
+#flow-rules .table-container th:nth-child(4),
+#flow-rules .table-container td:nth-child(4) { width: 20%; } /* Action */
+#flow-rules .table-container th:nth-child(5),
+#flow-rules .table-container td:nth-child(5) { width: 20%; } /* Actions */
+
+#qos-policies .table-container th:nth-child(1),
+#qos-policies .table-container td:nth-child(1) { width: 10%; } /* ID */
+#qos-policies .table-container th:nth-child(2),
+#qos-policies .table-container td:nth-child(2) { width: 25%; } /* Name */
+#qos-policies .table-container th:nth-child(3),
+#qos-policies .table-container td:nth-child(3) { width: 20%; } /* Priority */
+#qos-policies .table-container th:nth-child(4),
+#qos-policies .table-container td:nth-child(4) { width: 25%; } /* Bandwidth */
+#qos-policies .table-container th:nth-child(5),
+#qos-policies .table-container td:nth-child(5) { width: 20%; } /* Actions */
+
+#traffic-rules .table-container th:nth-child(1),
+#traffic-rules .table-container td:nth-child(1) { width: 10%; } /* ID */
+#traffic-rules .table-container th:nth-child(2),
+#traffic-rules .table-container td:nth-child(2) { width: 15%; } /* Name */
+#traffic-rules .table-container th:nth-child(3),
+#traffic-rules .table-container td:nth-child(3) { width: 20%; } /* Source Port */
+#traffic-rules .table-container th:nth-child(4),
+#traffic-rules .table-container td:nth-child(4) { width: 20%; } /* Destination Port */
+#traffic-rules .table-container th:nth-child(5),
+#traffic-rules .table-container td:nth-child(5) { width: 20%; } /* Path */
+#traffic-rules .table-container th:nth-child(6),
+#traffic-rules .table-container td:nth-child(6) { width: 15%; } /* Actions */
+
+/* Also apply fixed table layout to the network devices ports table */
+#network-devices .table-container table {
+  table-layout: fixed;
+  width: 100%;
+}
+#network-devices .table-container th:nth-child(1),
+#network-devices .table-container td:nth-child(1) { width: 25%; } /* Port Number */
+#network-devices .table-container th:nth-child(2),
+#network-devices .table-container td:nth-child(2) { width: 40%; } /* Name */
+#network-devices .table-container th:nth-child(3),
+#network-devices .table-container td:nth-child(3) { width: 35%; } /* State */
+
+/* Card layout for items */
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.item-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.item-card p {
+  margin: 0 0 8px 0;
+  font-size: 0.9em;
+}
+
+.item-card strong {
+  color: #34495e;
+}
+
+.item-actions {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.item-actions button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease;
+}
+
+.item-actions button:hover {
+  background-color: #c82333;
+}
