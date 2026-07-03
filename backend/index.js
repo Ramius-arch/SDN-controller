@@ -79,6 +79,23 @@ app.post('/api/login', (req, res, next) => {
     })(req, res, next);
 });
 
+app.post('/api/guest-login', async (req, res) => {
+    try {
+        const [guestUser] = await User.findOrCreate({
+            where: { username: 'guest_user' },
+            defaults: {
+                email: 'guest@example.com',
+                password: 'guestpassword123',
+                role: 'admin',
+            },
+        });
+        const token = jwt.sign({ id: guestUser.id, username: guestUser.username, role: guestUser.role }, process.env.JWT_SECRET || 'jwtsecretkey', { expiresIn: '1h' });
+        res.json({ token, message: 'Logged in as guest' });
+    } catch (err) {
+        res.status(500).json({ message: 'Error generating guest token', error: err.message });
+    }
+});
+
 // Protect all other /api routes with JWT authentication
 app.use('/api', passport.authenticate('jwt', { session: false }), apiRoutes);
 

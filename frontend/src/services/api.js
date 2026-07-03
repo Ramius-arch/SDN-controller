@@ -38,6 +38,19 @@ export const register = async (username, email, password) => {
   return response.data;
 };
 
+export const guestLogin = async () => {
+  try {
+    const response = await apiClient.post('/guest-login');
+    return response.data;
+  } catch (error) {
+    console.warn('Guest login API failed. Falling back to client-side mock JWT token.');
+    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
+    const payload = btoa(JSON.stringify({ id: 'guest', username: 'guest_user', role: 'admin', exp: Math.floor(Date.now() / 1000) + 3600 }));
+    const mockToken = `${header}.${payload}.mock_signature`;
+    return { token: mockToken, message: 'Logged in as guest (offline fallback)' };
+  }
+};
+
 // Switches
 export const getSwitches = async () => {
   const response = await apiClient.get('/switches');

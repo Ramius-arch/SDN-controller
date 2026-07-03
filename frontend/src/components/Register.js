@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../services/api';
+import { register, guestLogin } from '../services/api';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -17,6 +17,16 @@ function Register() {
     } catch (error) {
       console.error('Registration error:', error.response?.data || error.message);
       alert(error.response?.data?.message || 'Registration failed.');
+    }
+  };
+
+  const handleGuestLogin = async () => {
+    try {
+      const response = await guestLogin();
+      localStorage.setItem('token', response.token);
+      window.location.href = '/dashboard';
+    } catch (error) {
+      console.error('Guest login error:', error);
     }
   };
 
@@ -48,7 +58,22 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Register</button>
+        
+        <div className="login-divider" style={{ display: 'flex', alignItems: 'center', margin: '15px 0' }}>
+          <hr style={{ flexGrow: 1, border: 'none', borderTop: '1px solid #ccc' }} />
+          <span style={{ padding: '0 10px', fontSize: '12px', color: '#666' }}>OR</span>
+          <hr style={{ flexGrow: 1, border: 'none', borderTop: '1px solid #ccc' }} />
+        </div>
+        
+        <button
+          type="button"
+          onClick={handleGuestLogin}
+          className="guest-button"
+          style={{ width: '100%', backgroundColor: 'transparent', color: '#0070f3', border: '1px solid #0070f3', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+        >
+          Explore as Guest (Demo)
+        </button>
       </form>
     </div>
   );
