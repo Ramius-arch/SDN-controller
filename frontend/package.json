@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend for SDN Controller",
   "main": "index.js",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "cross-env PORT=3001 react-scripts start",
     "build": "react-scripts build",

@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: sdn-controller-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: "npm install"
+    startCommand: "node index.js"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_DIALECT
+        value: sqlite
+      - key: DATABASE
+        value: ./sdn_controller.db
+      - key: SESSION_SECRET
+        value: sdn-controller-super-secret-key-12345
+      - key: JWT_SECRET
+        value: sdn-controller-jwt-secret-key-67890
+      - key: PYTHON_SERVICE_URL
+        value: https://sdn-controller-python.onrender.com
+
+  - type: web
+    name: sdn-controller-python
+    env: docker
+    plan: free
+    dockerContext: docker/python
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: DEBUG
+        value: "true"
+      - key: PROMETHEUS_WORKSPACE_ID
+        value: ws-xxxx

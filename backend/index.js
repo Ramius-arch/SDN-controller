@@ -11,14 +11,7 @@ const jwt = require('jsonwebtoken');
 const session = require('express-session');
 
 // Database configuration
-const sequelize = new Sequelize({
-    dialect: process.env.DB_DIALECT,
-    database: process.env.DATABASE,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT),
-});
+const sequelize = require('./config/database');
 
 // Models initialization (replace with your actual models)
 const User = require('./models/User');
