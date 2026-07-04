@@ -58,19 +58,19 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Register</button>
+        <button type="submit" style={{ width: '100%' }}>Register</button>
         
-        <div className="login-divider" style={{ display: 'flex', alignItems: 'center', margin: '15px 0' }}>
-          <hr style={{ flexGrow: 1, border: 'none', borderTop: '1px solid #ccc' }} />
-          <span style={{ padding: '0 10px', fontSize: '12px', color: '#666' }}>OR</span>
-          <hr style={{ flexGrow: 1, border: 'none', borderTop: '1px solid #ccc' }} />
+        <div className="login-divider">
+          <hr />
+          <span>OR</span>
+          <hr />
         </div>
         
         <button
           type="button"
           onClick={handleGuestLogin}
-          className="guest-button"
-          style={{ width: '100%', backgroundColor: 'transparent', color: '#0070f3', border: '1px solid #0070f3', padding: '10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+          className="guest-button btn-secondary"
+          style={{ width: '100%' }}
         >
           Explore as Guest (Demo)
         </button>
